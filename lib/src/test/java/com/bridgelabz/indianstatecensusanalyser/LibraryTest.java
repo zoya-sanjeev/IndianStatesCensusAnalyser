@@ -5,13 +5,13 @@ package com.bridgelabz.indianstatecensusanalyser;
 
 import org.junit.Test;
 
-import com.bridgelabz.indianstatecensusanalyser.Library;
+import com.bridgelabz.indianstatecensusanalyser.IndianStatesCensusCSV;
 
 import static org.junit.Assert.*;
 
 public class LibraryTest {
     @Test public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
+        IndianStatesCensusCSV classUnderTest = new IndianStatesCensusCSV();
         assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
     }
 }

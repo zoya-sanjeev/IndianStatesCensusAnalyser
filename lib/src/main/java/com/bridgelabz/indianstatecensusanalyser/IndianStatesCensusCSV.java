@@ -3,8 +3,6 @@
  */
 package com.bridgelabz.indianstatecensusanalyser;
 
-public class Library {
-    public boolean someLibraryMethod() {
-        return true;
-    }
+public class IndianStatesCensusCSV {
+
 }
