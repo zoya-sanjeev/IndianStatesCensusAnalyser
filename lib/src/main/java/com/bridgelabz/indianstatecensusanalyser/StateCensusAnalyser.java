@@ -30,9 +30,9 @@ public class StateCensusAnalyser {
     		
 		} catch (IOException e) {
 			throw new CensusAnalyserException(e.getMessage(), ExceptionType.CENSUS_FILE_PROBLEM);
-		}catch (IllegalStateException e) {
-			throw new CensusAnalyserException(e.getMessage(), ExceptionType.UNABLE_TO_PARSE);
-		}
+		}catch (RuntimeException e) {
+            throw new CensusAnalyserException(e.getMessage(), CensusAnalyserException.ExceptionType.CSV_FILE_INTERNAL_ISSUES);
+        }
 		return numberOfEntries;
 	}
 
