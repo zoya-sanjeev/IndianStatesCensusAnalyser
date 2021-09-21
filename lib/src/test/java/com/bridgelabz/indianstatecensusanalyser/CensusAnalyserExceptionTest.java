@@ -13,6 +13,7 @@ import org.junit.Assert;
 
 public class CensusAnalyserExceptionTest {
 	private static final String INDIA_CENSUS_CSV_FILE_PATH = "./src/test/resources/IndianStatesCensus.csv";
+	private static final String CSV_WRONG_FILE_PATH="./IndianStatesCensus.csv";
 	
     @Test public void loadIndiaCensusData_givenIndianCensusCSVFile_returnsCorrectNumberRecords() {
         try {
@@ -20,6 +21,17 @@ public class CensusAnalyserExceptionTest {
             int numOfRecords = censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
             Assert.assertEquals(29, numOfRecords);
         } catch (CensusAnalyserException e) {
+        }
+        
+    }
+    
+    @Test  public void loadIndiaCensusData_givenWrongPath_returnsCorrectNumberRecords() {
+    	try {
+            StateCensusAnalyser censusAnalyser = new StateCensusAnalyser();
+            int numOfRecords = censusAnalyser.loadIndiaCensusData(CSV_WRONG_FILE_PATH);
+            
+        } catch (CensusAnalyserException e) {
+        	Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_FILE_PATH, e.type);
         }
     }
 }
