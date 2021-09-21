@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Assert;
 
-public class CensusAnalyserExceptionTest {
+public class CensusAnalyserTest {
 	private static final String INDIA_CENSUS_CSV_FILE_PATH = "./src/test/resources/IndianStatesCensus.csv";
 	private static final String CSV_WRONG_FILE_PATH="./IndianStatesCensus.csv";
 	private static final String INCORRECT_FILE_FORMAT = "./src/test/resources/CensusDataWrongType.txt";
