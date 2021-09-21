@@ -20,6 +20,7 @@ public class CensusAnalyserTest {
 	private static final String CSV_CENSUS_WRONG_HEADER = "./src/test/resources/CsvFileWrongHeader.csv";
 	private static final String STATE_CSV_FILE_PATH = "./src/test/resources/IndianStateCodes.csv";
 	private static final String STATE_CSV_FILE_WRONG_PATH = "./IndianStateCodes.csv";
+	private static final String STATE_CSV_WRONG_TYPE = "./src/test/resources/StateCodeWrongType.txt";
 	
 	
     @Test public void givenIndiaCensusData_whenCorrectIndianCensusCSVFile_returnsCorrectNumberRecords() {
@@ -87,6 +88,16 @@ public class CensusAnalyserTest {
 
         } catch (CensusAnalyserException e) {
         	Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+        }
+    }
+    
+    @Test 
+    public void givenStatesData_WithWrongFileType_ShouldThrowException() {
+        try {
+        	StateCensusAnalyser censusAnalyser = new StateCensusAnalyser();
+            int numOfRecords = censusAnalyser.loadStateCode(STATE_CSV_WRONG_TYPE);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_INCORRECT_FILE_FORMAT, e.type);
         }
     }
    
