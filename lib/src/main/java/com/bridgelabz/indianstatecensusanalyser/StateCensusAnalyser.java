@@ -5,13 +5,14 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import com.bridgelabz.indianstatecensusanalyser.CensusAnalyserException.ExceptionType;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import java.util.Iterator;
 public class StateCensusAnalyser {
 	
-	public int loadIndiaCensusData(String csvFilePath) {
+	public int loadIndiaCensusData(String csvFilePath)throws CensusAnalyserException {
 		
 		int numberOfEntries = 0;
 		try {
@@ -28,7 +29,9 @@ public class StateCensusAnalyser {
     		}
     		
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new CensusAnalyserException(e.getMessage(), ExceptionType.CENSUS_FILE_PROBLEM);
+		}catch (IllegalStateException e) {
+			throw new CensusAnalyserException(e.getMessage(), ExceptionType.UNABLE_TO_PARSE);
 		}
 		return numberOfEntries;
 	}
